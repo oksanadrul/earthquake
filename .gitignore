@@ -1,0 +1,72 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Node.js related
+node_modules/
+**/node_modules/
+.pnp/
+.pnp.js
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+dist/
+build/
+out/
+
+# NX related
+/.nx/
+.cache/
+*.nx
+nx-*.log
+**/dist/
+**/build/
+
+
+# Logs and temporary files
+*.log
+*.tsbuildinfo
+*.eslintcache
+
+# compiled output
+dist
+tmp
+out-tsc
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.nx/cache
+.nx/workspace-data
+
+# Next.js
+.next
+out
+
+test-output
