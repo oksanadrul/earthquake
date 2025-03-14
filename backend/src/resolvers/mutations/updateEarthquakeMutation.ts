@@ -15,7 +15,7 @@ export const updateEarthquakeMutation = {
         location: { longitude: string; latitude: string };
         magnitude: string;
         date: string;
-      }
+      },
     ) => {
       try {
         const earthquake = await Earthquake.findById(id);
@@ -50,10 +50,7 @@ export const updateEarthquakeMutation = {
           throw new Error(`Validation failed: ${error.message}`);
         }
 
-        if (
-          error instanceof Error &&
-          error.message === 'Earthquake not found'
-        ) {
+        if (error instanceof Error && error.message === 'Earthquake not found') {
           throw new Error(error.message); // Throw the specific error message
         }
 

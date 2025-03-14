@@ -1,15 +1,11 @@
 import { ZonedDateTime } from '@internationalized/date';
 
-export function formValidation(
-  keyField: string,
-  value: string | ZonedDateTime | null
-) {
+export function formValidation(keyField: string, value: string | ZonedDateTime | null) {
   switch (keyField) {
     case 'magnitude':
       return {
         condition: (value && (+value <= 0 || +value > 10)) || !value,
-        errorMessage:
-          'Please enter a valid number of magnitude. It can be a decimal number from 0.01 to 10.',
+        errorMessage: 'Please enter a valid number of magnitude. It can be a decimal number from 0.01 to 10.',
       };
     case 'date': {
       return {

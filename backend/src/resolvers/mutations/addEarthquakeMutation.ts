@@ -13,7 +13,7 @@ export const addEarthquakeMutation = {
         location: { longitude: string; latitude: string };
         magnitude: string;
         date: string;
-      }
+      },
     ) => {
       try {
         const earthquake = new Earthquake({
@@ -37,10 +37,7 @@ export const addEarthquakeMutation = {
         }
 
         // Handle duplicate earthquake error (this comes from the pre-save hook)
-        if (
-          error instanceof Error &&
-          error.message.includes('Duplicate earthquake detected')
-        ) {
+        if (error instanceof Error && error.message.includes('Duplicate earthquake detected')) {
           throw new Error(error.message);
         }
 

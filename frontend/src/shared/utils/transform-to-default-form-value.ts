@@ -15,9 +15,7 @@ export function transformToDefaultFormValue(earthquake?: EarthquakeType | null) 
     ? {
         id: earthquake?.id ?? null,
         magnitude: earthquake?.magnitude ?? '',
-        date: earthquake.date
-          ? parseAbsoluteToLocal(parseCustomDate(earthquake.date))
-          : null,
+        date: earthquake.date ? parseAbsoluteToLocal(parseCustomDate(earthquake.date)) : null,
         latitude: Number(earthquake?.location.latitude).toFixed(2) ?? '',
         longitude: Number(earthquake?.location.longitude).toFixed(2) ?? '',
       }

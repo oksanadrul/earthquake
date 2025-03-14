@@ -1,8 +1,8 @@
 export enum Grid {
-  MAGNITUDE = "MAGNITUDE",
-  DATE = "DATE",
-  LATITUDE = "LATITUDE",
-  LONGITUDE = "LONGITUDE",
+  MAGNITUDE = 'MAGNITUDE',
+  DATE = 'DATE',
+  LATITUDE = 'LATITUDE',
+  LONGITUDE = 'LONGITUDE',
 }
 
 export const customColumns = Object.keys(Grid).map((column) => ({
@@ -19,10 +19,4 @@ export const actionsColumn = {
 
 export const columns = [...customColumns, actionsColumn];
 
-export const INITIAL_VISIBLE_COLUMNS = [
-  'magnitude',
-  'date',
-  'longitude',
-  'latitude',
-  'actions',
-];
+export const INITIAL_VISIBLE_COLUMNS = ['magnitude', 'date', 'longitude', 'latitude', 'actions'];

@@ -9,8 +9,6 @@ export function transformFormData(formValues: FormValues) {
       longitude: formValues.longitude,
     },
     magnitude: formValues.magnitude,
-    date: formValues.date
-      ? formatZonedDateTimeToCustomString(formValues.date)
-      : '',
+    date: formValues.date ? formatZonedDateTimeToCustomString(formValues.date) : '',
   };
 }

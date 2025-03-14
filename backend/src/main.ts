@@ -16,7 +16,6 @@ import { downloadCSV } from './middleware/downloadCSV';
 import { typeDefs } from './schema/schema';
 import { resolvers } from './resolvers';
 
-
 // MongoDB URI and connection
 const MONGODB_URI = 'mongodb://localhost:27017/myapp';
 
@@ -62,7 +61,6 @@ const schemaString = printSchema(schema);
 // Write the schema to a file
 writeFileSync('schema.graphqls', schemaString);
 console.log('Schema has been saved to schema.graphqls');
-
 
 // Start Apollo Server and integrate with Express
 async function startServer() {

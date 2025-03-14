@@ -5,5 +5,5 @@ import { updateEarthquakeMutation } from './updateEarthquakeMutation';
 export const mutationResolvers = {
   ...addEarthquakeMutation.Mutation,
   ...deleteEarthquakeMutation.Mutation,
-  ...updateEarthquakeMutation.Mutation
+  ...updateEarthquakeMutation.Mutation,
 };

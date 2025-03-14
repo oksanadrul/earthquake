@@ -19,10 +19,7 @@ import { useAddEarthquake } from '@/hooks/add-earthquake';
 import { FormValues } from '@/shared/types/form-value-types';
 import { transformFormData } from '@/shared/utils/transform-form-data';
 import { formValidation } from '@/shared/utils/form-validation';
-import {
-  formDefaultValues,
-  transformToDefaultFormValue,
-} from '@/shared/utils/transform-to-default-form-value';
+import { formDefaultValues, transformToDefaultFormValue } from '@/shared/utils/transform-to-default-form-value';
 
 type EarthquakeModalProps = {
   isOpen: boolean;
@@ -32,40 +29,27 @@ type EarthquakeModalProps = {
   deleteOpenedEarthquake?: () => void;
 };
 
-function EarthquakeModal({
-  isOpen,
-  onOpenChange,
-  earthquake,
-  action,
-  deleteOpenedEarthquake,
-}: EarthquakeModalProps) {
+function EarthquakeModal({ isOpen, onOpenChange, earthquake, action, deleteOpenedEarthquake }: EarthquakeModalProps) {
   const { updateEarthquake, loading: updateLading } = useUpdateEarthquake();
   const { addEarthquake, loading: addLoading } = useAddEarthquake();
   const [formValues, setFormValues] = useState<FormValues>(formDefaultValues);
   const [errors, setErrors] = useState({});
   const isActionButtonDisabled = useMemo(
     () =>
-      Object.entries(formValues).some(
-        ([key, value]) => key !== 'id' && !value
-      ) || Object.values(errors).some((field) => field),
-    [errors, formValues]
+      Object.entries(formValues).some(([key, value]) => key !== 'id' && !value) ||
+      Object.values(errors).some((field) => field),
+    [errors, formValues],
   );
 
   useEffect(() => {
     setFormValues(transformToDefaultFormValue(earthquake));
   }, [earthquake]);
 
-  function handleUpdateField(
-    keyField: string,
-    value: string | ZonedDateTime | null
-  ) {
+  function handleUpdateField(keyField: string, value: string | ZonedDateTime | null) {
     setFormValues((prev) => ({ ...prev, [keyField]: value }));
   }
 
-  function handleFormErrors(
-    keyField: string,
-    value: string | ZonedDateTime | null
-  ) {
+  function handleFormErrors(keyField: string, value: string | ZonedDateTime | null) {
     const { condition, errorMessage } = formValidation(keyField, value);
 
     if (condition) {
@@ -219,9 +203,7 @@ function EarthquakeModal({
                 isLoading={action === 'update' ? updateLading : addLoading}
                 isDisabled={isActionButtonDisabled}
                 onPress={() => {
-                  action === 'update'
-                    ? handleUpdateEarthquake()
-                    : handleAddEarthquake();
+                  action === 'update' ? handleUpdateEarthquake() : handleAddEarthquake();
                   onClose();
                   deleteOpenedEarthquake && deleteOpenedEarthquake();
                 }}

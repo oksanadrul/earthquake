@@ -13,19 +13,24 @@ type GridTopContentProps = {
   onAction: (value?: 'add' | 'update') => void;
   onOpen: () => void;
   earthquakes: (EarthquakeType | null)[];
-}
+};
 
-function GridTopContent({visibleColumns, onVisibleColumns, columns, onSelectedEarthquake, onAction, onOpen, earthquakes}: GridTopContentProps) {
+function GridTopContent({
+  visibleColumns,
+  onVisibleColumns,
+  columns,
+  onSelectedEarthquake,
+  onAction,
+  onOpen,
+  earthquakes,
+}: GridTopContentProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between gap-3 items-end">
         <div className="flex gap-4">
           <Dropdown>
             <DropdownTrigger className="sm:flex">
-              <Button
-                endContent={<ChevronDownIcon className="text-small" />}
-                variant="flat"
-              >
+              <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
                 Columns
               </Button>
             </DropdownTrigger>
@@ -57,12 +62,10 @@ function GridTopContent({visibleColumns, onVisibleColumns, columns, onSelectedEa
         </div>
       </div>
       <div className="flex justify-between items-center  gap-3">
-          <span className="text-default-400 text-small">
-            Total {earthquakes.length} earthquakes
-          </span>
+        <span className="text-default-400 text-small">Total {earthquakes.length} earthquakes</span>
       </div>
     </div>
-  )
+  );
 }
 
 export default GridTopContent;

@@ -16,19 +16,11 @@ type GridCellProps = {
   onOpen: () => void;
 };
 
-export const GridCell = ({
-  earthquake,
-  columnKey,
-  onAction,
-  onSelectedEarthquake,
-  onOpen,
-}: GridCellProps) => {
+export const GridCell = ({ earthquake, columnKey, onAction, onSelectedEarthquake, onOpen }: GridCellProps) => {
   const { deleteEarthquake, loading: deleteLoading } = useDeleteEarthquake();
   async function handleDeleteEarthquake(earthquakeId: string) {
     try {
-      await deleteEarthquake(
-        earthquakeId as unknown as Exact<DeleteEarthquakeVariables>
-      );
+      await deleteEarthquake(earthquakeId as unknown as Exact<DeleteEarthquakeVariables>);
       addToast({
         title: 'Earthquake Deleted Successfully',
         description: `The earthquake record with ID ${earthquakeId} has been successfully deleted from the database.`,
@@ -48,11 +40,7 @@ export const GridCell = ({
       return (
         <Chip
           className="capitalize"
-          color={
-            earthquake?.magnitude && +earthquake?.magnitude >= 8
-              ? 'danger'
-              : 'warning'
-          }
+          color={earthquake?.magnitude && +earthquake?.magnitude >= 8 ? 'danger' : 'warning'}
           size="sm"
           variant="flat"
         >
@@ -68,17 +56,13 @@ export const GridCell = ({
     case 'longitude':
       return (
         <div className="flex flex-col">
-          <p className="text-bold text-small capitalize">
-            {Number(earthquake?.location.longitude).toFixed(2)}
-          </p>
+          <p className="text-bold text-small capitalize">{Number(earthquake?.location.longitude).toFixed(2)}</p>
         </div>
       );
     case 'latitude':
       return (
         <div className="flex flex-col">
-          <p className="text-bold text-small capitalize">
-            {Number(earthquake?.location.latitude).toFixed(2)}
-          </p>
+          <p className="text-bold text-small capitalize">{Number(earthquake?.location.latitude).toFixed(2)}</p>
         </div>
       );
     case 'actions':

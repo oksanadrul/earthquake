@@ -6,7 +6,7 @@ export interface IEarthquake extends Document {
     longitude: string;
     latitude: string;
   };
-  magnitude: string;  // Changed to string
+  magnitude: string; // Changed to string
   date: string;
 }
 
@@ -21,7 +21,7 @@ const earthquakeSchema = new Schema<IEarthquake>({
           // Check if longitude is between -180 and 180 degrees
           return !isNaN(parseFloat(v)) && parseFloat(v) >= -180 && parseFloat(v) <= 180;
         },
-        message: props => `${props.value} is not a valid longitude! Longitude must be between -180 and 180 degrees.`,
+        message: (props) => `${props.value} is not a valid longitude! Longitude must be between -180 and 180 degrees.`,
       },
     },
     latitude: {
@@ -32,7 +32,7 @@ const earthquakeSchema = new Schema<IEarthquake>({
           // Check if latitude is between -90 and 90 degrees
           return !isNaN(parseFloat(v)) && parseFloat(v) >= -90 && parseFloat(v) <= 90;
         },
-        message: props => `${props.value} is not a valid latitude! Latitude must be between -90 and 90 degrees.`,
+        message: (props) => `${props.value} is not a valid latitude! Latitude must be between -90 and 90 degrees.`,
       },
     },
   },
@@ -45,7 +45,8 @@ const earthquakeSchema = new Schema<IEarthquake>({
         const magnitude = parseFloat(v);
         return !isNaN(magnitude) && magnitude >= 0 && magnitude <= 10;
       },
-      message: props => `${props.value} is not a valid magnitude! Magnitude must be a string representation of a number between 0 and 10.`,
+      message: (props) =>
+        `${props.value} is not a valid magnitude! Magnitude must be a string representation of a number between 0 and 10.`,
     },
   },
   date: {
@@ -55,11 +56,12 @@ const earthquakeSchema = new Schema<IEarthquake>({
       validator: function (v: string) {
         // Ensure the date is after Jan 1, 1970 and not today
         const currentDate = new Date();
-        const today = new Date(currentDate.setHours(0, 0, 0, 0));  // Reset to midnight
+        const today = new Date(currentDate.setHours(0, 0, 0, 0)); // Reset to midnight
         const inputDate = new Date(v);
         return inputDate >= new Date('1970-01-01') && inputDate < today;
       },
-      message: props => `${props.value} is not a valid date! Date must be from January 1, 1970, to today, excluding today.`,
+      message: (props) =>
+        `${props.value} is not a valid date! Date must be from January 1, 1970, to today, excluding today.`,
     },
   },
 });
@@ -68,7 +70,7 @@ const earthquakeSchema = new Schema<IEarthquake>({
 earthquakeSchema.index({ 'location.longitude': 1, 'location.latitude': 1, date: 1 }, { unique: true });
 
 // Check for duplicates before saving
-earthquakeSchema.pre('save', async function(next) {
+earthquakeSchema.pre('save', async function (next) {
   const existingEarthquake = await Earthquake.findOne({
     'location.longitude': this.location.longitude,
     'location.latitude': this.location.latitude,
@@ -76,10 +78,12 @@ earthquakeSchema.pre('save', async function(next) {
   });
 
   if (existingEarthquake) {
-    const error = new Error('Duplicate earthquake detected: An earthquake with the same location and date already exists.');
-    next(error);  // Pass the error to Mongoose’s `next` function
+    const error = new Error(
+      'Duplicate earthquake detected: An earthquake with the same location and date already exists.',
+    );
+    next(error); // Pass the error to Mongoose’s `next` function
   } else {
-    next();  // No duplicate found, proceed with saving
+    next(); // No duplicate found, proceed with saving
   }
 });
 

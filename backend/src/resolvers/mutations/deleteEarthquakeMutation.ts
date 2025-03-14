@@ -15,10 +15,7 @@ export const deleteEarthquakeMutation = {
         console.error('Error deleting earthquake:', error);
 
         // Handle the error for Earthquake not found
-        if (
-          error instanceof Error &&
-          error.message === 'Earthquake not found'
-        ) {
+        if (error instanceof Error && error.message === 'Earthquake not found') {
           throw new Error(error.message);
         }
 

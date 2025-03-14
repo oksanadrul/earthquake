@@ -1,10 +1,7 @@
 import EarthquakeGrid from '@/components/earthquake-grid/earthquake-grid';
 
-
 const EarthquakePage = () => {
-  return (
-    <EarthquakeGrid />
-  );
+  return <EarthquakeGrid />;
 };
 
 export default EarthquakePage;

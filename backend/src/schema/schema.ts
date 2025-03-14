@@ -23,17 +23,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addEarthquake(
-      location: LocationInput!
-      magnitude: String!
-      date: String!
-    ): Earthquake
-    updateEarthquake(
-      id: ID!
-      location: LocationInput!
-      magnitude: String!
-      date: String!
-    ): Earthquake
+    addEarthquake(location: LocationInput!, magnitude: String!, date: String!): Earthquake
+    updateEarthquake(id: ID!, location: LocationInput!, magnitude: String!, date: String!): Earthquake
     deleteEarthquake(id: ID!): String
   }
 `;

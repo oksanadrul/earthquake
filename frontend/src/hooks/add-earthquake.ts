@@ -2,16 +2,10 @@ import { useMutation } from '@apollo/client';
 import AddEarthquakeMutation from '@/graphql/add-earthquake.mutation.graphql';
 import { Earthquake } from '@/graphql/types/earthquake.query';
 import GetEarthquakeQuery from '@/graphql/earthquake.query.graphql';
-import {
-  AddEarthquake,
-  AddEarthquakeVariables,
-} from '@/graphql/types/add-earthquake.mutation';
+import { AddEarthquake, AddEarthquakeVariables } from '@/graphql/types/add-earthquake.mutation';
 
 function useAddEarthquake() {
-  const [mutation, { loading, error }] = useMutation<
-    AddEarthquakeVariables,
-    AddEarthquake
-  >(AddEarthquakeMutation);
+  const [mutation, { loading, error }] = useMutation<AddEarthquakeVariables, AddEarthquake>(AddEarthquakeMutation);
 
   function addEarthquake(input: AddEarthquakeVariables) {
     return mutation({

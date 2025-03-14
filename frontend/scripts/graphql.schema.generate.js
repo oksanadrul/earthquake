@@ -1,13 +1,11 @@
-const { introspectionFromSchema } = require("graphql");
-const { loadSchema } = require("@graphql-tools/load");
-const { GraphQLFileLoader } = require("@graphql-tools/graphql-file-loader");
-const { stitchSchemas } = require("@graphql-tools/stitch");
+const { introspectionFromSchema } = require('graphql');
+const { loadSchema } = require('@graphql-tools/load');
+const { GraphQLFileLoader } = require('@graphql-tools/graphql-file-loader');
+const { stitchSchemas } = require('@graphql-tools/stitch');
 const path = require('path');
 
-const fs = require("fs");
-const schemas = [
-  path.resolve(__dirname, '../../backend/schema.graphqls'),
-];
+const fs = require('fs');
+const schemas = [path.resolve(__dirname, '../../backend/schema.graphqls')];
 
 (async function () {
   const subschemas = await Promise.all(
@@ -29,10 +27,10 @@ const schemas = [
     directiveIsRepeatable: false,
   });
 
-  const filePath = "./schema.json";
-  console.log("Write introspection schema to " + filePath);
+  const filePath = './schema.json';
+  console.log('Write introspection schema to ' + filePath);
   fs.writeFileSync(filePath, JSON.stringify({ data: schemaJson }, null, 2), {
-    encoding: "utf8",
-    flag: "w",
+    encoding: 'utf8',
+    flag: 'w',
   });
 })();

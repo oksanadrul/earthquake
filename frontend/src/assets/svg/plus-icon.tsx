@@ -1,6 +1,6 @@
 import { IconSvgProps } from '@/shared/types/component-types';
 
-export const PlusIcon = ({size = 24, width, height, ...props}: IconSvgProps) => {
+export const PlusIcon = ({ size = 24, width, height, ...props }: IconSvgProps) => {
   return (
     <svg
       aria-hidden="true"
@@ -12,13 +12,7 @@ export const PlusIcon = ({size = 24, width, height, ...props}: IconSvgProps) => 
       width={size || width}
       {...props}
     >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-      >
+      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}>
         <path d="M6 12h12" />
         <path d="M12 18V6" />
       </g>

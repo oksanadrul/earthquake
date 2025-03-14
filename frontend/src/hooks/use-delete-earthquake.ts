@@ -1,15 +1,11 @@
 import { useMutation } from '@apollo/client';
-import {
-  DeleteEarthquake,
-  DeleteEarthquakeVariables,
-} from '@/graphql/types/delete-earthquake.mutation';
+import { DeleteEarthquake, DeleteEarthquakeVariables } from '@/graphql/types/delete-earthquake.mutation';
 import DeleteEarthquakeMutation from '@/graphql/delete-earthquake.mutation.graphql';
 
 function useDeleteEarthquake() {
-  const [mutation, { loading, error }] = useMutation<
-    DeleteEarthquakeVariables,
-    DeleteEarthquake
-  >(DeleteEarthquakeMutation);
+  const [mutation, { loading, error }] = useMutation<DeleteEarthquakeVariables, DeleteEarthquake>(
+    DeleteEarthquakeMutation,
+  );
 
   function deleteEarthquake(id: DeleteEarthquakeVariables) {
     return mutation({

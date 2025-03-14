@@ -29,29 +29,20 @@ export type ColumnType = {
 
 function EarthquakeGrid() {
   const { earthquakes, loading } = useGetEarthquake();
-  const [selectedEarthquake, setSelectedEarthquake] =
-    useState<EarthquakeType | null>(null);
-  const [visibleColumns, setVisibleColumns] = useState<SharedSelection>(
-    new Set(INITIAL_VISIBLE_COLUMNS)
-  );
+  const [selectedEarthquake, setSelectedEarthquake] = useState<EarthquakeType | null>(null);
+  const [visibleColumns, setVisibleColumns] = useState<SharedSelection>(new Set(INITIAL_VISIBLE_COLUMNS));
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [action, setAction] = useState<'add' | 'update'>();
 
   const headerColumns = useMemo(() => {
-    return columns.filter((column) =>
-      Array.from(visibleColumns).includes(column.uid)
-    );
+    return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
   }, [visibleColumns]);
 
   const sortedItems = useMemo(() => {
     return [...earthquakes].sort((a, b) => {
-      const first = a?.[
-        `${sortDescriptor?.column}`.toLowerCase() as keyof EarthquakeType
-      ] as string;
-      const second = b?.[
-        `${sortDescriptor?.column}`.toLowerCase() as keyof EarthquakeType
-      ] as string;
+      const first = a?.[`${sortDescriptor?.column}`.toLowerCase() as keyof EarthquakeType] as string;
+      const second = b?.[`${sortDescriptor?.column}`.toLowerCase() as keyof EarthquakeType] as string;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor?.direction === 'descending' ? -cmp : cmp;
