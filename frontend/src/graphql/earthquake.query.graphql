@@ -1,0 +1,7 @@
+#import "@/graphql/graphql-fragments/earthquake.fragment.graphql"
+
+query Earthquake {
+  earthquakes {
+    ...EarthInfo
+  }
+}

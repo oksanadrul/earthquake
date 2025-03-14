@@ -1,0 +1,48 @@
+{
+  "name": "@earthquake/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "nx build frontend",
+    "start": "next start",
+    "serve": "next dev",
+    "schema:generate": "node ./scripts/graphql.schema.generate.js",
+    "graphql:codegen": "graphql-codegen --config codegen.yml \"src/**/*.graphql\""
+  },
+  "nx": {
+    "tags": []
+  },
+  "dependencies": {
+    "@apollo/client": "^3.13.4",
+    "@graphql-tools/graphql-file-loader": "^8.0.17",
+    "@graphql-tools/load": "^8.0.17",
+    "@graphql-tools/stitch": "^9.4.19",
+    "@heroui/button": "^2.2.16",
+    "@heroui/react": "2.7.5",
+    "@heroui/system": "^2.4.12",
+    "@heroui/table": "^2.2.15",
+    "@heroui/theme": "^2.4.12",
+    "@internationalized/date": "3.7.0",
+    "@react-aria/selection": "^3.23.1",
+    "autoprefixer": "^10.4.21",
+    "framer-motion": "^12.5.0",
+    "graphql": "^16.10.0",
+    "next": "~15.1.4",
+    "npm": "^11.2.0",
+    "postcss": "^8.5.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwindcss": "3.4.17"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/near-operation-file-preset": "^3.0.0",
+    "@graphql-codegen/typed-document-node": "^5.1.0",
+    "@graphql-codegen/typescript": "^4.1.5",
+    "@graphql-codegen/typescript-operations": "^4.5.1",
+    "@next/eslint-plugin-next": "^15.2.2",
+    "eslint-config-next": "14.2.16",
+    "graphql-tag": "^2.12.6",
+    "heroui-cli": "^1.1.0"
+  }
+}

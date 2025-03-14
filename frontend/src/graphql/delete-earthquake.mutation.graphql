@@ -1,0 +1,3 @@
+mutation DeleteEarthquake($id: ID!) {
+  deleteEarthquake(id: $id)
+}

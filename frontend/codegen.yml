@@ -1,0 +1,42 @@
+overwrite: true
+schema: "schema.json"
+documents: "src/**/*.graphql"
+config:
+  preResolveTypes: true
+  namingConvention: keep
+  avoidOptionals:
+    field: true
+  nonOptionalTypename: true
+  skipTypeNameForRoot: true
+generates:
+  ./src/shared/types/graphql-global-types.ts:
+    plugins:
+      - typescript
+    config:
+      omitOperationSuffix: true
+      scalars:
+        Long: 'any'
+        DateTime: 'any'
+      extractAllFieldsToTypes: true
+      arrayInputCoercion: true
+      strictScalars: true
+  ./src/:
+    preset: near-operation-file
+    config:
+      omitOperationSuffix: true
+      extractAllFieldsToTypes: true
+      dedupeOperationSuffix: true
+      scalars:
+        Long: "Types.Scalars['Long']['input']"
+        DateTime: "Types.Scalars['DateTime']['input']"
+      arrayInputCoercion: true
+      strictScalars: true
+    presetConfig:
+      folder: "types"
+      extension: ".ts"
+      baseTypesPath: "~@/shared/types/graphql-global-types"
+    plugins:
+      - typescript-operations
+hooks:
+  afterAllFileWrite:
+    - prettier --write

@@ -13,7 +13,7 @@ build/
 out/
 
 # NX related
-/.nx/
+.nx/
 .cache/
 *.nx
 nx-*.log
@@ -41,6 +41,7 @@ out-tsc
 *.sublime-workspace
 
 # IDE - VSCode
+**/vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

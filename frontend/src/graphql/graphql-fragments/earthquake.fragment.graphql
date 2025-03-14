@@ -1,0 +1,9 @@
+fragment EarthInfo on Earthquake {
+  id
+  location {
+    longitude
+    latitude
+  }
+  magnitude
+  date
+}

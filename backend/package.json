@@ -1,0 +1,58 @@
+{
+  "name": "@earthquake/backend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "nx build backend",
+    "start": "node dist/main.js",
+    "serve": "ts-node src/main.ts"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "backend/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "./src/main.ts",
+          "tsConfig": "backend/tsconfig.app.json",
+          "assets": [
+            "backend/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "@graphql-tools/schema": "^10.0.21",
+    "axios": "^1.8.3",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "graphql-tag": "^2.12.6",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.13",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

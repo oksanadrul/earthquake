@@ -1,0 +1,10 @@
+#import "@/graphql/graphql-fragments/earthquake.fragment.graphql"
+
+mutation UpdateEarthquake($id: ID!
+$location: LocationInput!
+$magnitude: String!
+$date: String!) {
+  updateEarthquake(id: $id, location: $location, magnitude: $magnitude, date: $date) {
+    ...EarthInfo
+  }
+}
